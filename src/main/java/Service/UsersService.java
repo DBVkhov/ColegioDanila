@@ -7,6 +7,4 @@ public interface UsersService {
 
     void login(int id, String password);
 
-    List<UsersDTO> usersList();
-
 }

@@ -47,7 +47,6 @@ public class UsersServiceImplementation implements UsersService {
         return changeToUserDTO(usersRepository.getUserByIDFromDB(id));
     }
 
-    @Override
     public List<UsersDTO> usersList() {
         List<UsersDTO> usersDTO = null;
         for(Users users : usersRepository.getAllUsersFromDB()){
