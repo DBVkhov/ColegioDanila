@@ -30,6 +30,7 @@ description VARCHAR(30)
 CREATE TABLE IF NOT EXISTS TEACHERS(
 
 id primary key,
+dni VARCHAR(9),
 name VARCHAR(100),
 age DATE,
 idsub INT,
@@ -41,12 +42,11 @@ FOREIGN KEY(idsub) FROM SUBJECTS(id)
 CREATE TABLE IF NOT EXISTS STUDENTS(
 
 id primary key,
+dni VARCHAR(9),
 name VARCHAR(100),
 age DATE,
 course INT,
-idsub INT,
-FOREIGN KEY(id) FROM USERS(id),
-FOREIGN KEY(idsub) FROM SUBJECTS(id)
+FOREIGN KEY(id) FROM USERS(id)
 
 );
 
@@ -68,7 +68,6 @@ CREATE TABLE IF NOT EXISTS STUDENTINCLASSROOM(
 
 idstud primary key,
 idsub int,
-grade int,
 FOREIGN KEY(idstud) FROM STUDENTS(id),
 FOREIGN KEY(idsub) FROM SUBJECTS(id)
 

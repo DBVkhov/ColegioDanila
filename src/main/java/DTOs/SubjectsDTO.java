@@ -1,25 +1,20 @@
-package Repository.Entities;
+package DTOs;
 
-import java.util.Date;
-
-public class Students {
+public class SubjectsDTO {
 
     int id;
 
-    String dni;
-
     String name;
-
-    Date age;
 
     int course;
 
-    public Students(int id, String dni, String name, Date age, int course) {
+    String description;
+
+    public SubjectsDTO(int id, String name, int course, String description) {
         this.id = id;
-        this.dni = dni;
         this.name = name;
-        this.age = age;
         this.course = course;
+        this.description = description;
     }
 
     public int getId() {
@@ -30,14 +25,6 @@ public class Students {
         this.id = id;
     }
 
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
     public String getName() {
         return name;
     }
@@ -46,20 +33,20 @@ public class Students {
         this.name = name;
     }
 
-    public Date getAge() {
-        return age;
-    }
-
-    public void setAge(Date age) {
-        this.age = age;
-    }
-
     public int getCourse() {
         return course;
     }
 
     public void setCourse(int course) {
         this.course = course;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

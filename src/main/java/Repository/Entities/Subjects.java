@@ -1,25 +1,20 @@
 package Repository.Entities;
 
-import java.util.Date;
-
-public class Students {
+public class Subjects {
 
     int id;
 
-    String dni;
-
     String name;
-
-    Date age;
 
     int course;
 
-    public Students(int id, String dni, String name, Date age, int course) {
+    String description;
+
+    public Subjects(int id, String name, int course, String description) {
         this.id = id;
-        this.dni = dni;
         this.name = name;
-        this.age = age;
         this.course = course;
+        this.description = description;
     }
 
     public int getId() {
@@ -30,28 +25,12 @@ public class Students {
         this.id = id;
     }
 
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Date getAge() {
-        return age;
-    }
-
-    public void setAge(Date age) {
-        this.age = age;
     }
 
     public int getCourse() {
@@ -62,4 +41,12 @@ public class Students {
         this.course = course;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
+

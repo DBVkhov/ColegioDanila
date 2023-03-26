@@ -25,8 +25,8 @@ public class UsersRepository {
 
             while (resultSet.next()) {
 
-                int iD = resultSet.getInt("ID");
-                String pass = resultSet.getString("PASSWORD");
+                int iD = resultSet.getInt("id");
+                String pass = resultSet.getString("password");
                 users = new Users(iD, pass);
 
             }
