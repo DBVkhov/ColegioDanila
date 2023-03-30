@@ -3,25 +3,29 @@ package Service;
 import DTOs.UsersDTO;
 import Repository.Entities.Teachers;
 import Repository.Entities.Users;
+import Repository.StudentsRepository;
 import Repository.TeachersRepository;
 import Repository.UsersRepository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class UsersServiceImplementation implements UsersService {
 
     private final UsersRepository usersRepository = new UsersRepository();
 
+    private final TeachersRepository teachersRepository = new TeachersRepository();
+    private final StudentsRepository studentsRepository = new StudentsRepository();
+
     @Override
-    public void login(int id, String password) {
+    public void login(int id, String password) throws SQLException {
 
-        Users loggedUser = null;
+        final Users loggedUser = usersRepository.getLoggedUserFromDB(id, password);
 
-        loggedUser = usersRepository.getLoggedUserFromDB(id, password);
         if(loggedUser != null){
-            if(loggedUser.getId() == ){};
-            if(loggedUser.getId() == ){};
-            if(loggedUser.getId() == ){};
+            if(teachersRepository.getAllTeachersFromDB().stream().anyMatch(teacher -> teacher.getId()==loggedUser.getId())){};
+            if(studentsRepository.getAllStudentsFromDB().stream().anyMatch(student -> student.getId()==loggedUser.getId())){};
+            if(usersRepository.itsAdmin(loggedUser)){};
         }
 
     }

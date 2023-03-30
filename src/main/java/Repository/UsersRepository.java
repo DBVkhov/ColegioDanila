@@ -10,6 +10,7 @@ import static Config.ConfigH2DB.getConnection;
 public class UsersRepository {
 
     private final String USERS = "USERS";
+    private final String ADMINS = "ADMINS";
 
     public Users getLoggedUserFromDB(int id, String password){
 
@@ -37,6 +38,26 @@ public class UsersRepository {
         }
 
         return users;
+    }
+    public boolean itsAdmin(Users user){
+        try {
+            String query = "SELECT * FROM "+ ADMINS+" WHERE id = ?";
+            PreparedStatement statement = getConnection().prepareStatement(query);
+
+            statement.setInt(1, user.getId());
+            final ResultSet resultSet = statement.executeQuery();
+
+            if(resultSet != null){
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR in UserRepository in getLoggedUser");
+            throw new RuntimeException(e);
+        }
     }
 
     public Users getUserByIDFromDB(int id){

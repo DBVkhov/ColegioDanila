@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import Service.UsersServiceImplementation;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
 
         BufferedReader buffered = new BufferedReader(new InputStreamReader(System.in));
         UsersServiceImplementation service = new UsersServiceImplementation();
