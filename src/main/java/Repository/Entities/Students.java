@@ -1,6 +1,7 @@
 package Repository.Entities;
 
 import java.util.Date;
+import java.util.List;
 
 public class Students {
 
@@ -14,12 +15,23 @@ public class Students {
 
     int course;
 
-    public Students(int id, String dni, String name, Date age, int course) {
+    List<StudentInClassroom> classrooms;
+
+    public Students(int id, String dni, String name, Date age, int course, List<StudentInClassroom> classrooms) {
         this.id = id;
         this.dni = dni;
         this.name = name;
         this.age = age;
         this.course = course;
+        this.classrooms = classrooms;
+    }
+
+    public List<StudentInClassroom> getClassrooms() {
+        return classrooms;
+    }
+
+    public void setClassrooms(List<StudentInClassroom> classrooms) {
+        this.classrooms = classrooms;
     }
 
     public int getId() {

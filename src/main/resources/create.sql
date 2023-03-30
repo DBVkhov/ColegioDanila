@@ -64,9 +64,10 @@ CHECK(qstudents<=20)
 
 );
 
-CREATE TABLE IF NOT EXISTS STUDENTINCLASSROOM(
+CREATE TABLE IF NOT EXISTS STUDENTSINCLASSROOMS(
 
-idstud primary key,
+id primary key,
+idstud int,
 idsub int,
 FOREIGN KEY(idstud) FROM STUDENTS(id),
 FOREIGN KEY(idsub) FROM SUBJECTS(id)

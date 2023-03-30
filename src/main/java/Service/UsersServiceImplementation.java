@@ -24,8 +24,8 @@ public class UsersServiceImplementation implements UsersService {
         loggedUser = usersRepository.getLoggedUserFromDB(id, password);
         if(loggedUser != null){
             if(loggedUser.getId() == ){};
-            else if(loggedUser.getId() == ){};
-            else if(loggedUser.getId() == ){};
+            if(loggedUser.getId() == ){};
+            if(loggedUser.getId() == ){};
         }
 
     }

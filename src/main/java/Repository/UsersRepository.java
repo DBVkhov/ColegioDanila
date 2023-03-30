@@ -98,15 +98,7 @@ public class UsersRepository {
 
             statement.setInt(1, users.getId());
             statement.setString(2, users.getPassword());
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-
-                int iD = resultSet.getInt("ID");
-                String pass = resultSet.getString("PASSWORD");
-                users = new Users(iD, pass);
-
-            }
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,11 +109,12 @@ public class UsersRepository {
     }
 
     public void modifyPasswordUserInDB(int id, String password){
-        String qr = "UPDATE USERS SET password = ? WHERE id = ?";
+        String qr = "UPDATE"+ USERS +"SET password = ? WHERE id = ?";
         try{
             PreparedStatement statement = getConnection().prepareStatement(qr);
             statement.setString(1, password);
             statement.setInt(2, id);
+            statement.executeUpdate();
 
     } catch (SQLException e) {
         e.printStackTrace();
@@ -132,7 +125,7 @@ public class UsersRepository {
     public void deleteUserInDB(int id){
         try {
 
-            String query = "DELETE FROM USERS WHERE  id = ?";
+            String query = "DELETE FROM "+ USERS + " WHERE  id = ?";
             PreparedStatement statement = getConnection().prepareStatement(query);
             statement.setInt(1, id);
             statement.executeUpdate();
