@@ -17,6 +17,12 @@ public class Subjects {
         this.description = description;
     }
 
+    public Subjects(String name, int course, String description) {
+        this.name = name;
+        this.course = course;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }

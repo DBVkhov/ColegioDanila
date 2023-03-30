@@ -109,7 +109,7 @@ public class UsersRepository {
     }
 
     public void modifyPasswordUserInDB(int id, String password){
-        String qr = "UPDATE"+ USERS +"SET password = ? WHERE id = ?";
+        String qr = "UPDATE "+ USERS +" SET password = ? WHERE id = ?";
         try{
             PreparedStatement statement = getConnection().prepareStatement(qr);
             statement.setString(1, password);

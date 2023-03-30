@@ -5,7 +5,6 @@ import Repository.Entities.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static Config.ConfigH2DB.getConnection;
@@ -29,7 +28,7 @@ public class ClassroomsRepository {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             Classrooms classrooms = null;
-            List<StudentInClassroom> liststudent;
+            List<StudentsInClassroom> liststudent;
 
             while (resultSet.next()) {
 
@@ -59,7 +58,7 @@ public class ClassroomsRepository {
 
             Classrooms classroom;
             List<Classrooms> classrooms = null;
-            List<StudentInClassroom> liststudent;
+            List<StudentsInClassroom> liststudent;
 
             while (resultSet.next()) {
 
@@ -84,11 +83,14 @@ public class ClassroomsRepository {
     public void setNewClassroomInDB(Classrooms classroom){
 
         try {
-            String query = "INSERT INTO "+ CLASSROOMS +" (id, ) VALUES (?, ?)";
+            String query = "INSERT INTO "+ CLASSROOMS +" (name, course, idsub, idteach, qstudents) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement statement = getConnection().prepareStatement(query);
 
-            statement.setInt(1, classroom.getId());
-            statement.setString(2, classroom.getPassword());
+            statement.setString(1, classroom.getName());
+            statement.setInt(2, classroom.getCourse());
+            statement.setInt(3, classroom.getSubject().getId());
+            statement.setInt(4, classroom.getTeacher().getId());
+            statement.setInt(5, classroom.getQuantityOfStudents());
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -99,17 +101,20 @@ public class ClassroomsRepository {
 
     }
 
-    public void modifyPasswordClassroomInDB(int id, String password){
-        String qr = "UPDATE"+ CLASSROOMS +"SET password = ? WHERE id = ?";
+    public void modifyClassroomInDB(int id, String name, int course, int idsubject, int idteacher, int quantityofstudents){
+        String qr = "UPDATE "+ CLASSROOMS +" SET name = ?, course = ?, idsub = ?, idteach = ?, qstudents = ?  WHERE id = ?";
         try{
             PreparedStatement statement = getConnection().prepareStatement(qr);
-            statement.setString(1, password);
-            statement.setInt(2, id);
+            statement.setString(1, name);
+            statement.setInt(2, course);
+            statement.setInt(3, idsubject);
+            statement.setInt(4, idteacher);
+            statement.setInt(5, quantityofstudents);
             statement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("ERROR in ClassroomRepository in modifyPasswordClassroom");
+            System.out.println("ERROR in ClassroomRepository in modifyClassroom");
         }
     }
 

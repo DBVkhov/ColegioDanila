@@ -53,7 +53,7 @@ FOREIGN KEY(id) FROM USERS(id)
 
 CREATE TABLE IF NOT EXISTS CLASSROOMS(
 
-id primary key,
+id identity primary key,
 name VARCHAR(100) NOT NULL,
 course INT NOT NULL,
 idsub INT NOT NULL,
@@ -67,20 +67,23 @@ CHECK(qstudents<=20)
 
 CREATE TABLE IF NOT EXISTS STUDENTSINCLASSROOMS(
 
-id primary key,
+id identity primary key,
 idstud int,
 idcr int,
-idsub int,
-FOREIGN KEY(idstud) FROM STUDENTS(id),
-FOREIGN KEY(idsub) FROM SUBJECTS(id)
+FOREIGN KEY(idstud) FROM STUDENTS(id)
 
 );
 
-CREATE TABLE IF NOT EXISTS STUDENTGRADES(
+CREATE TABLE IF NOT EXISTS GRADES(
 
-id primary key,
-idstudentincr int,
-grade int,
-FOREIGN KEY(idstudentincr) FROM STUDENTINCLASSROOM(id)
+id identity primary key,
+itsfinal boolean,
+idstud int,
+idsub int,
+course int,
+grade int NOT NULL,
+description VARCHAR(300),
+FOREIGN KEY(idstudentincr) FROM STUDENTINCLASSROOM(id),
+FOREIGN KEY(idsub) FROM SUBJECTS(id)
 
 );

@@ -1,6 +1,9 @@
 package DTOs;
 
+import Repository.Entities.StudentsInClassroom;
+
 import java.util.Date;
+import java.util.List;
 
 public class StudentsDTO {
 
@@ -14,12 +17,23 @@ public class StudentsDTO {
 
     int course;
 
-    public StudentsDTO(int id, String dni, String name, Date age, int course) {
+    List<StudentsInClassroom> classrooms;
+
+    public StudentsDTO(int id, String dni, String name, Date age, int course, List<StudentsInClassroom> classrooms) {
         this.id = id;
         this.dni = dni;
         this.name = name;
         this.age = age;
         this.course = course;
+        this.classrooms = classrooms;
+    }
+
+    public List<StudentsInClassroom> getClassrooms() {
+        return classrooms;
+    }
+
+    public void setClassrooms(List<StudentsInClassroom> classrooms) {
+        this.classrooms = classrooms;
     }
 
     public int getId() {

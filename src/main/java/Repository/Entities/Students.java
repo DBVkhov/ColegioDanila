@@ -15,9 +15,9 @@ public class Students {
 
     int course;
 
-    List<StudentInClassroom> classrooms;
+    List<StudentsInClassroom> classrooms;
 
-    public Students(int id, String dni, String name, Date age, int course, List<StudentInClassroom> classrooms) {
+    public Students(int id, String dni, String name, Date age, int course, List<StudentsInClassroom> classrooms) {
         this.id = id;
         this.dni = dni;
         this.name = name;
@@ -26,11 +26,11 @@ public class Students {
         this.classrooms = classrooms;
     }
 
-    public List<StudentInClassroom> getClassrooms() {
+    public List<StudentsInClassroom> getClassrooms() {
         return classrooms;
     }
 
-    public void setClassrooms(List<StudentInClassroom> classrooms) {
+    public void setClassrooms(List<StudentsInClassroom> classrooms) {
         this.classrooms = classrooms;
     }
 

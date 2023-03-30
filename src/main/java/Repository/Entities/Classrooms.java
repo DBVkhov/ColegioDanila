@@ -1,9 +1,5 @@
 package Repository.Entities;
 
-import DTOs.StudentsDTO;
-import DTOs.TeachersDTO;
-
-import javax.security.auth.Subject;
 import java.util.List;
 
 public class Classrooms {
@@ -18,11 +14,11 @@ public class Classrooms {
 
     Teachers teacher;
 
-    List<StudentInClassroom> students;
+    List<StudentsInClassroom> students;
 
     int quantityOfStudents;
 
-    public Classrooms(int id, String name, int course, Subjects subject, Teachers teacher, List<StudentInClassroom> students, int quantityOfStudents) {
+    public Classrooms(int id, String name, int course, Subjects subject, Teachers teacher, List<StudentsInClassroom> students, int quantityOfStudents) {
         this.id = id;
         this.name = name;
         this.course = course;
@@ -72,11 +68,11 @@ public class Classrooms {
         this.teacher = teacher;
     }
 
-    public List<StudentInClassroom> getStudents() {
+    public List<StudentsInClassroom> getStudents() {
         return students;
     }
 
-    public void setStudents(List<StudentInClassroom> students) {
+    public void setStudents(List<StudentsInClassroom> students) {
         this.students = students;
     }
 

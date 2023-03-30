@@ -12,10 +12,6 @@ public class UsersServiceImplementation implements UsersService {
 
     private final UsersRepository usersRepository = new UsersRepository();
 
-    private final Users usersLogged = null;
-
-    private final TeachersRepository teachersRepository = new TeachersRepository();
-
     @Override
     public void login(int id, String password) {
 

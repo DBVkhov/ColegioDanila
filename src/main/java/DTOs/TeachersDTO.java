@@ -1,5 +1,7 @@
 package DTOs;
 
+import Repository.Entities.Subjects;
+
 import javax.security.auth.Subject;
 import java.util.Date;
 
@@ -13,9 +15,9 @@ public class TeachersDTO {
 
     Date age;
 
-    SubjectsDTO subject;
+    Subjects subject;
 
-    public TeachersDTO(int id, String name, String dni, Date age, SubjectsDTO subject) {
+    public TeachersDTO(int id, String name, String dni, Date age, Subjects subject) {
         this.id = id;
         this.name = name;
         this.dni = dni;
@@ -55,11 +57,11 @@ public class TeachersDTO {
         this.age = age;
     }
 
-    public SubjectsDTO getSubject() {
+    public Subjects getSubject() {
         return subject;
     }
 
-    public void setSubject(SubjectsDTO subject) {
+    public void setSubject(Subjects subject) {
         this.subject = subject;
     }
 }

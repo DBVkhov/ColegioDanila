@@ -1,6 +1,4 @@
 package Repository.Entities;
-
-import javax.security.auth.Subject;
 import java.util.Date;
 
 public class Teachers {
