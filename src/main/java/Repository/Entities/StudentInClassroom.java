@@ -8,10 +8,21 @@ public class StudentInClassroom {
 
     Classrooms classroom;
 
-    public StudentInClassroom(int id, Students student, Classrooms classroom) {
+    Subjects subject;
+
+    public StudentInClassroom(int id, Students student, Classrooms classroom, Subjects subject) {
         this.id = id;
         this.student = student;
         this.classroom = classroom;
+        this.subject = subject;
+    }
+
+    public Subjects getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subjects subject) {
+        this.subject = subject;
     }
 
     public int getId() {

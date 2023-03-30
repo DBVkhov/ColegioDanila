@@ -1,11 +1,11 @@
 package Repository;
 
-import Repository.Entities.Classrooms;
-import Repository.Entities.Users;
+import Repository.Entities.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static Config.ConfigH2DB.getConnection;
@@ -13,6 +13,11 @@ import static Config.ConfigH2DB.getConnection;
 public class ClassroomsRepository {
 
     private final String CLASSROOMS = "CLASSROOMS";
+
+    private final SubjectsRepository subjectsRepository = new SubjectsRepository();
+    private final TeachersRepository teachersRepository = new TeachersRepository();
+
+    private final StudentsInClassroomsRepository studentsInClassroomsRepository = new StudentsInClassroomsRepository();
 
     public Classrooms getClassroomByIDFromDB(int id){
 
@@ -24,13 +29,18 @@ public class ClassroomsRepository {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             Classrooms classrooms = null;
+            List<StudentInClassroom> liststudent;
 
             while (resultSet.next()) {
 
-                int iD = resultSet.getInt("ID");
-                String pass = resultSet.getString("PASSWORD");
-                classrooms = new Classrooms();
-
+                int iD = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                int course = resultSet.getInt("course");
+                Subjects subject = subjectsRepository.getSubjectByID(resultSet.getInt("idsub"));
+                Teachers teacher = teachersRepository.getTeacherByIDFromDB(resultSet.getInt("idteach"));
+                int qstudents = resultSet.getInt("qstudents");
+                liststudent = studentsInClassroomsRepository.getStudentsClassroomsByClassroomIDFromDB(resultSet.getInt("idcr"));
+                classrooms = new Classrooms(iD, name, course, subject, teacher, liststudent, qstudents);
             }
             return classrooms;
 
@@ -39,25 +49,31 @@ public class ClassroomsRepository {
             throw new RuntimeException(e);
         }
 
-
-
     }
 
     public List<Classrooms> getAllClassroomsFromDB(){
         try {
-            List<Classrooms> classroom = null;
             String query = "SELECT * FROM "+ CLASSROOMS;
             PreparedStatement statement = getConnection().prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
 
+            Classrooms classroom;
+            List<Classrooms> classrooms = null;
+            List<StudentInClassroom> liststudent;
+
             while (resultSet.next()) {
 
-                int iD = resultSet.getInt("ID");
-                String pass = resultSet.getString("PASSWORD");
-                classroom.add(new Classrooms(iD, pass));
-
+                int iD = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                int course = resultSet.getInt("course");
+                Subjects subject = subjectsRepository.getSubjectByID(resultSet.getInt("idsub"));
+                Teachers teacher = teachersRepository.getTeacherByIDFromDB(resultSet.getInt("idteach"));
+                int qstudents = resultSet.getInt("qstudents");
+                liststudent = studentsInClassroomsRepository.getStudentsClassroomsByClassroomIDFromDB(resultSet.getInt("idcr"));
+                classroom = new Classrooms(iD, name, course, subject, teacher, liststudent, qstudents);
+                classrooms.add(classroom);
             }
-            return classroom;
+            return classrooms;
 
         } catch (SQLException e) {
             System.out.println("ERROR in ClassroomRepository in getAllClassroomFromDB");
@@ -68,7 +84,7 @@ public class ClassroomsRepository {
     public void setNewClassroomInDB(Classrooms classroom){
 
         try {
-            String query = "INSERT INTO "+ CLASSROOMS +" (id, password) VALUES (?, ?)";
+            String query = "INSERT INTO "+ CLASSROOMS +" (id, ) VALUES (?, ?)";
             PreparedStatement statement = getConnection().prepareStatement(query);
 
             statement.setInt(1, classroom.getId());

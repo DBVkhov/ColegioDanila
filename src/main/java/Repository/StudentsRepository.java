@@ -15,24 +15,7 @@ public class StudentsRepository {
 
     private final String STUDENTS = "STUDENTS";
 
-    private final String STUDENTSINCLASSROOMS = "STUDENTSINCLASSROOMS";
-
-    private final SubjectsRepository subjectsRepository = new SubjectsRepository();
-
-    public StudentInClassroom getStudentsClassroomsByStudentIDFromDB(int id) throws SQLException {
-        String qr = "SELECT * FROM " + STUDENTSINCLASSROOMS + " WHERE idstud = ?";
-        PreparedStatement statement = getConnection().prepareStatement(qr);
-
-        statement.setInt(1, id);
-        ResultSet resultSet = statement.executeQuery();
-
-        while(resultSet.next()){
-            int iD = resultSet.getInt("id");
-            Students student = getStudentByIDFromDB(resultSet.getInt("idstud"));
-            Classrooms classroom = get
-        }
-
-    }
+    private final StudentsInClassroomsRepository studentsInClassroomsRepository = new StudentsInClassroomsRepository();
 
     public Students getStudentByIDFromDB(int id) throws SQLException {
 
@@ -50,7 +33,7 @@ public class StudentsRepository {
             String name = resultSet.getString("name");
             Date age = resultSet.getDate("age");
             int course = resultSet.getInt("course");
-            student = new Students(iD, dni, name, age, course);
+            student = new Students(iD, dni, name, age, course, studentsInClassroomsRepository.getStudentsClassroomsByStudentIDFromDB(iD));
         }
 
         return student;
@@ -71,7 +54,7 @@ public class StudentsRepository {
             String name = resultSet.getString("name");
             Date age = resultSet.getDate("age");
             int course = resultSet.getInt("course");
-            student = new Students(iD, dni, name, age, course);
+            student = new Students(iD, dni, name, age, course, studentsInClassroomsRepository.getStudentsClassroomsByStudentIDFromDB(iD));
             students.add(student);
         }
         return students;

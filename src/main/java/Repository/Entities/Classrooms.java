@@ -14,15 +14,15 @@ public class Classrooms {
 
     int course;
 
-    Subject subject;
+    Subjects subject;
 
-    TeachersDTO teacher;
+    Teachers teacher;
 
-    List<StudentsDTO> students;
+    List<StudentInClassroom> students;
 
     int quantityOfStudents;
 
-    public Classrooms(int id, String name, int course, Subject subject, TeachersDTO teacher, List<StudentsDTO> students, int quantityOfStudents) {
+    public Classrooms(int id, String name, int course, Subjects subject, Teachers teacher, List<StudentInClassroom> students, int quantityOfStudents) {
         this.id = id;
         this.name = name;
         this.course = course;
@@ -56,33 +56,35 @@ public class Classrooms {
         this.course = course;
     }
 
-    public Subject getSubject() {
+    public Subjects getSubject() {
         return subject;
     }
 
-    public void setSubject(Subject subject) {
+    public void setSubject(Subjects subject) {
         this.subject = subject;
     }
 
-    public TeachersDTO getTeacher() {
+    public Teachers getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(TeachersDTO teacher) {
+    public void setTeacher(Teachers teacher) {
         this.teacher = teacher;
     }
 
-    public List<StudentsDTO> getStudents() {
+    public List<StudentInClassroom> getStudents() {
         return students;
     }
 
-    public void setStudents(List<StudentsDTO> students) {
+    public void setStudents(List<StudentInClassroom> students) {
         this.students = students;
     }
 
     public int getQuantityOfStudents() {
-        quantityOfStudents = getStudents().size();
         return quantityOfStudents;
     }
 
+    public void setQuantityOfStudents(int quantityOfStudents) {
+        this.quantityOfStudents = quantityOfStudents;
+    }
 }
