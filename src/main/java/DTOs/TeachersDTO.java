@@ -15,22 +15,14 @@ public class TeachersDTO {
 
     Date age;
 
-    Subjects subject;
+    SubjectsDTO subject;
 
-    public TeachersDTO(int id, String name, String dni, Date age, Subjects subject) {
+    public TeachersDTO(int id, String name, String dni, Date age, SubjectsDTO subject) {
         this.id = id;
         this.name = name;
         this.dni = dni;
         this.age = age;
         this.subject = subject;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
     }
 
     public int getId() {
@@ -49,6 +41,14 @@ public class TeachersDTO {
         this.name = name;
     }
 
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
     public Date getAge() {
         return age;
     }
@@ -57,11 +57,11 @@ public class TeachersDTO {
         this.age = age;
     }
 
-    public Subjects getSubject() {
+    public SubjectsDTO getSubject() {
         return subject;
     }
 
-    public void setSubject(Subjects subject) {
+    public void setSubject(SubjectsDTO subject) {
         this.subject = subject;
     }
 }

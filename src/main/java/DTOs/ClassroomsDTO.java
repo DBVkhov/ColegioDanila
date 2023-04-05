@@ -14,16 +14,25 @@ public class ClassroomsDTO {
 
     int course;
 
-    Subjects subject;
+    SubjectsDTO subject;
 
-    Teachers teacher;
+    TeachersDTO teacher;
 
-    List<StudentsInClassroom> students;
+    List<StudentsInClassroomDTO> students;
 
     int quantityOfStudents;
 
-    public ClassroomsDTO(int id, String name, int course, Subjects subject, Teachers teacher, List<StudentsInClassroom> students, int quantityOfStudents) {
+    public ClassroomsDTO(int id, String name, int course, SubjectsDTO subject, TeachersDTO teacher, List<StudentsInClassroomDTO> students, int quantityOfStudents) {
         this.id = id;
+        this.name = name;
+        this.course = course;
+        this.subject = subject;
+        this.teacher = teacher;
+        this.students = students;
+        this.quantityOfStudents = quantityOfStudents;
+    }
+
+    public ClassroomsDTO(String name, int course, SubjectsDTO subject, TeachersDTO teacher, List<StudentsInClassroomDTO> students, int quantityOfStudents) {
         this.name = name;
         this.course = course;
         this.subject = subject;
@@ -56,27 +65,27 @@ public class ClassroomsDTO {
         this.course = course;
     }
 
-    public Subjects getSubject() {
+    public SubjectsDTO getSubject() {
         return subject;
     }
 
-    public void setSubject(Subjects subject) {
+    public void setSubject(SubjectsDTO subject) {
         this.subject = subject;
     }
 
-    public Teachers getTeacher() {
+    public TeachersDTO getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teachers teacher) {
+    public void setTeacher(TeachersDTO teacher) {
         this.teacher = teacher;
     }
 
-    public List<StudentsInClassroom> getStudents() {
+    public List<StudentsInClassroomDTO> getStudents() {
         return students;
     }
 
-    public void setStudents(List<StudentsInClassroom> students) {
+    public void setStudents(List<StudentsInClassroomDTO> students) {
         this.students = students;
     }
 

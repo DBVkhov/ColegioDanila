@@ -21,6 +21,13 @@ public class Teachers {
         this.subject = subject;
     }
 
+    public Teachers(String name, String dni, Date age, Subjects subject) {
+        this.name = name;
+        this.dni = dni;
+        this.age = age;
+        this.subject = subject;
+    }
+
     public String getDni() {
         return dni;
     }

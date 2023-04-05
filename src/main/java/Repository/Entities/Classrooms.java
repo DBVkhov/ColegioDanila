@@ -28,6 +28,15 @@ public class Classrooms {
         this.quantityOfStudents = quantityOfStudents;
     }
 
+    public Classrooms(String name, int course, Subjects subject, Teachers teacher, List<StudentsInClassroom> students, int quantityOfStudents) {
+        this.name = name;
+        this.course = course;
+        this.subject = subject;
+        this.teacher = teacher;
+        this.students = students;
+        this.quantityOfStudents = quantityOfStudents;
+    }
+
     public int getId() {
         return id;
     }

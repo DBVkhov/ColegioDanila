@@ -17,6 +17,12 @@ public class SubjectsDTO {
         this.description = description;
     }
 
+    public SubjectsDTO(String name, int course, String description) {
+        this.name = name;
+        this.course = course;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }

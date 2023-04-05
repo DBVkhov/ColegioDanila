@@ -9,9 +9,9 @@ public class GradesDTO {
 
     boolean itsfinal;
 
-    Students student;
+    StudentsDTO student;
 
-    Subjects subject;
+    SubjectsDTO subject;
 
     int course;
 
@@ -19,7 +19,7 @@ public class GradesDTO {
 
     String description;
 
-    public GradesDTO(int id, boolean itsfinal, Students student, Subjects subject, int course, int grade, String description) {
+    public GradesDTO(int id, boolean itsfinal, StudentsDTO student, SubjectsDTO subject, int course, int grade, String description) {
         this.id = id;
         this.itsfinal = itsfinal;
         this.student = student;
@@ -29,7 +29,7 @@ public class GradesDTO {
         this.description = description;
     }
 
-    public GradesDTO(boolean itsfinal, Students student, Subjects subject, int course, int grade, String description) {
+    public GradesDTO(boolean itsfinal, StudentsDTO student, SubjectsDTO subject, int course, int grade, String description) {
         this.itsfinal = itsfinal;
         this.student = student;
         this.subject = subject;
@@ -54,19 +54,19 @@ public class GradesDTO {
         this.itsfinal = itsfinal;
     }
 
-    public Students getStudent() {
+    public StudentsDTO getStudent() {
         return student;
     }
 
-    public void setStudent(Students student) {
+    public void setStudent(StudentsDTO student) {
         this.student = student;
     }
 
-    public Subjects getSubject() {
+    public SubjectsDTO getSubject() {
         return subject;
     }
 
-    public void setSubject(Subjects subject) {
+    public void setSubject(SubjectsDTO subject) {
         this.subject = subject;
     }
 
@@ -93,5 +93,4 @@ public class GradesDTO {
     public void setDescription(String description) {
         this.description = description;
     }
-
 }

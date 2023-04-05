@@ -7,17 +7,17 @@ public class StudentsInClassroomDTO {
 
     int id;
 
-    Students student;
+    StudentsDTO student;
 
-    Classrooms classroom;
+    ClassroomsDTO classroom;
 
-    public StudentsInClassroomDTO(int id, Students student, Classrooms classroom) {
-        this.id = id;
+    public StudentsInClassroomDTO(StudentsDTO student, ClassroomsDTO classroom) {
         this.student = student;
         this.classroom = classroom;
     }
 
-    public StudentsInClassroomDTO(Students student, Classrooms classroom) {
+    public StudentsInClassroomDTO(int id, StudentsDTO student, ClassroomsDTO classroom) {
+        this.id = id;
         this.student = student;
         this.classroom = classroom;
     }
@@ -30,19 +30,19 @@ public class StudentsInClassroomDTO {
         this.id = id;
     }
 
-    public Students getStudent() {
+    public StudentsDTO getStudent() {
         return student;
     }
 
-    public void setStudent(Students student) {
+    public void setStudent(StudentsDTO student) {
         this.student = student;
     }
 
-    public Classrooms getClassroom() {
+    public ClassroomsDTO getClassroom() {
         return classroom;
     }
 
-    public void setClassroom(Classrooms classroom) {
+    public void setClassroom(ClassroomsDTO classroom) {
         this.classroom = classroom;
     }
 }

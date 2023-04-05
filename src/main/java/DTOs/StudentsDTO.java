@@ -28,6 +28,14 @@ public class StudentsDTO {
         this.classrooms = classrooms;
     }
 
+    public StudentsDTO(String dni, String name, Date age, int course, List<StudentsInClassroom> classrooms) {
+        this.dni = dni;
+        this.name = name;
+        this.age = age;
+        this.course = course;
+        this.classrooms = classrooms;
+    }
+
     public List<StudentsInClassroom> getClassrooms() {
         return classrooms;
     }
