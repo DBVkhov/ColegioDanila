@@ -10,14 +10,6 @@ public class StudentsServiceImplementation implements StudentsService{
 
     }
 
-    public StudentsDTO changeToStudentsDTO(Students student){
-        StudentsDTO studentDTO = new StudentsDTO(student.getId(), student.getDni(), student.getName(), student.getAge(), student.getCourse(), student.getClassrooms());
-        return studentDTO;
-    }
 
-    public Students changeToStudentEntity(StudentsDTO student){
-        Students studentEnt = new Students(student.getId(), student.getDni(), student.getName(), student.getAge(), student.getCourse(), student.getClassrooms());
-        return studentEnt;
-    }
 
 }

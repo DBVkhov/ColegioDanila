@@ -2,15 +2,9 @@ package Service;
 
 import DTOs.*;
 import Repository.Entities.*;
-import Repository.StudentsRepository;
-import Repository.TeachersRepository;
-
 import java.util.List;
 
 public class ChangeClassService {
-
-    private final TeachersServiceImplementation teachersServiceImplementation = new TeachersServiceImplementation();
-    private final StudentsServiceImplementation studentsServiceImplementation = new StudentsServiceImplementation();
 
 
     public List<StudentsInClassroom> changeListOfStudentsInClassroomToEntities(List<StudentsInClassroomDTO> list){
@@ -29,13 +23,29 @@ public class ChangeClassService {
         return listDTO;
     }
 
+    public List<Grades> changeListOfGradesDTOToEntities(List<GradesDTO> list){
+        List<Grades> listGrades = null;
+        for(GradesDTO grade : list){
+            listGrades.add(changeToGradesEntity(grade));
+        }
+        return listGrades;
+    }
+
+    public List<GradesDTO> changeListOfGradesToDTO(List<Grades> list){
+        List<GradesDTO> listGrades = null;
+        for(Grades grade : list){
+            listGrades.add(changeToGradesDTO(grade));
+        }
+        return listGrades;
+    }
+
     public ClassroomsDTO changeToClassroomsDTO(Classrooms classroom){
         return new ClassroomsDTO(
                 classroom.getId(),
                 classroom.getName(),
                 classroom.getCourse(), 
                 changeToSubjectDTO(classroom.getSubject()),
-                teachersServiceImplementation.changeToTeacherDTO(classroom.getTeacher()),
+                changeToTeacherDTO(classroom.getTeacher()),
                 changeListOfStudentsInClassroomToDTO(classroom.getStudents()),
                 classroom.getQuantityOfStudents()
         );
@@ -47,7 +57,7 @@ public class ChangeClassService {
                 classroom.getName(),
                 classroom.getCourse(),
                 changeToSubjectEntity(classroom.getSubject()),
-                teachersServiceImplementation.changeToTeacherEntity(classroom.getTeacher()),
+                changeToTeacherEntity(classroom.getTeacher()),
                 changeListOfStudentsInClassroomToEntities(classroom.getStudents()),
                 classroom.getQuantityOfStudents()
         );
@@ -75,7 +85,7 @@ public class ChangeClassService {
         return new GradesDTO(
                 grades.getId(),
                 grades.isItsfinal(), 
-                studentsServiceImplementation.changeToStudentsDTO(grades.getStudent()),
+                changeToStudentsDTO(grades.getStudent()),
                 changeToSubjectDTO(grades.getSubject()),
                 grades.getCourse(),
                 grades.getGrade(),
@@ -87,7 +97,7 @@ public class ChangeClassService {
         return new Grades(
                 grades.getId(),
                 grades.isItsfinal(),
-                studentsServiceImplementation.changeToStudentEntity(grades.getStudent()),
+                changeToStudentEntity(grades.getStudent()),
                 changeToSubjectEntity(grades.getSubject()),
                 grades.getCourse(),
                 grades.getGrade(),
@@ -98,7 +108,7 @@ public class ChangeClassService {
     public StudentsInClassroomDTO changeToStudentsInClassroomDTO(StudentsInClassroom studentsInClassroom){
         return new StudentsInClassroomDTO(
                 studentsInClassroom.getId(),
-                studentsServiceImplementation.changeToStudentsDTO(studentsInClassroom.getStudent()),
+                changeToStudentsDTO(studentsInClassroom.getStudent()),
                 changeToClassroomsDTO(studentsInClassroom.getClassroom())
         );
     }
@@ -106,9 +116,59 @@ public class ChangeClassService {
     public StudentsInClassroom changeToStudentsInClassroomEntity(StudentsInClassroomDTO studentsInClassroom){
         return new StudentsInClassroom(
                 studentsInClassroom.getId(),
-                studentsServiceImplementation.changeToStudentEntity(studentsInClassroom.getStudent()),
+                changeToStudentEntity(studentsInClassroom.getStudent()),
                 changeToClassroomEntity(studentsInClassroom.getClassroom())
         );
     }
-    
+
+    public StudentsDTO changeToStudentsDTO(Students student){
+        StudentsDTO studentDTO = new StudentsDTO(
+                student.getId(),
+                student.getDni(),
+                student.getName(),
+                student.getAge(),
+                student.getCourse(),
+                changeListOfStudentsInClassroomToDTO(student.getClassrooms())
+        );
+        return studentDTO;
+    }
+
+    public Students changeToStudentEntity(StudentsDTO student){
+        Students studentEnt = new Students(
+                student.getId(),
+                student.getDni(),
+                student.getName(),
+                student.getAge(),
+                student.getCourse(),
+                changeListOfStudentsInClassroomToEntities(student.getClassrooms())
+        );
+        return studentEnt;
+    }
+
+    public TeachersDTO changeToTeacherDTO(Teachers teacher){
+        TeachersDTO teacherDTO = new TeachersDTO(
+                teacher.getId(),
+                teacher.getName(),
+                teacher.getDni(),
+                teacher.getAge(),
+                changeToSubjectDTO(teacher.getSubject())
+        );
+        return teacherDTO;
+    }
+
+    public Teachers changeToTeacherEntity(TeachersDTO teacher){
+        Teachers teacherEnt = new Teachers(
+                teacher.getId(),
+                teacher.getName(),
+                teacher.getDni(),
+                teacher.getAge(),
+                changeToSubjectEntity(teacher.getSubject())
+        );
+        return teacherEnt;
+    }
+
+    public UsersDTO changeToUserDTO(Users users){return new UsersDTO(users.getId(), users.getPassword());}
+
+    public Users changeToUserEntity(UsersDTO user){return new Users(user.getId(), user.getPassword());}
+
 }

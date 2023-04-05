@@ -17,30 +17,14 @@ public class StudentsDTO {
 
     int course;
 
-    List<StudentsInClassroom> classrooms;
+    List<StudentsInClassroomDTO> classrooms;
 
-    public StudentsDTO(int id, String dni, String name, Date age, int course, List<StudentsInClassroom> classrooms) {
+    public StudentsDTO(int id, String dni, String name, Date age, int course, List<StudentsInClassroomDTO> classrooms) {
         this.id = id;
         this.dni = dni;
         this.name = name;
         this.age = age;
         this.course = course;
-        this.classrooms = classrooms;
-    }
-
-    public StudentsDTO(String dni, String name, Date age, int course, List<StudentsInClassroom> classrooms) {
-        this.dni = dni;
-        this.name = name;
-        this.age = age;
-        this.course = course;
-        this.classrooms = classrooms;
-    }
-
-    public List<StudentsInClassroom> getClassrooms() {
-        return classrooms;
-    }
-
-    public void setClassrooms(List<StudentsInClassroom> classrooms) {
         this.classrooms = classrooms;
     }
 
@@ -82,5 +66,13 @@ public class StudentsDTO {
 
     public void setCourse(int course) {
         this.course = course;
+    }
+
+    public List<StudentsInClassroomDTO> getClassrooms() {
+        return classrooms;
+    }
+
+    public void setClassrooms(List<StudentsInClassroomDTO> classrooms) {
+        this.classrooms = classrooms;
     }
 }
