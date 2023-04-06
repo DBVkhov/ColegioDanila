@@ -34,7 +34,7 @@ public class SubjectsRepository {
 
     }
 
-    public List<Subjects> getAllSubjects(int id) throws SQLException {
+    public List<Subjects> getAllSubjects() throws SQLException {
         String qr = "SELECT * FROM " + SUBJECTS;
         PreparedStatement statement = getConnection().prepareStatement(qr);
         ResultSet resultSet = statement.getResultSet();
