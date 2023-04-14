@@ -11,6 +11,6 @@ public interface AdminsService {
     void addTeacherDTOToDB(TeachersDTO teacher);
     void addClassroomDTOToDB(ClassroomsDTO classroom);
     void addStudentDTOToDB(StudentsDTO student);
-    void changeTeacherDTOToDB(TeachersDTO teacher) throws IOException, SQLException;
+    void modifyTeacherDTOInDB(TeachersDTO teacher) throws IOException, SQLException;
     StudentsDTO searchStudentDTOByID(int id) throws SQLException;
 }

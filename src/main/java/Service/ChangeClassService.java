@@ -39,6 +39,38 @@ public class ChangeClassService {
         return listGrades;
     }
 
+    public List<Students> changeListOfStudentsDTOToEntities(List<StudentsDTO> list){
+        List<Students> listStudents = null;
+        for(StudentsDTO student : list){
+            listStudents.add(changeToStudentEntity(student));
+        }
+        return listStudents;
+    }
+
+    public List<StudentsDTO> changeListOfStudentsToDTO(List<Students> list){
+        List<StudentsDTO> listStudents = null;
+        for(Students student : list){
+            listStudents.add(changeToStudentsDTO(student));
+        }
+        return listStudents;
+    }
+
+    public List<Teachers> changeListOfTeachersDTOToEntities(List<TeachersDTO> list){
+        List<Teachers> listTeachers = null;
+        for(TeachersDTO teachers : list){
+            listTeachers.add(changeToTeacherEntity(teachers));
+        }
+        return listTeachers;
+    }
+
+    public List<TeachersDTO> changeListOfTeachersToDTO(List<Teachers> list){
+        List<TeachersDTO> listTeachers = null;
+        for(Teachers teachers : list){
+            listTeachers.add(changeToTeacherDTO(teachers));
+        }
+        return listTeachers;
+    }
+
     public ClassroomsDTO changeToClassroomsDTO(Classrooms classroom){
         return new ClassroomsDTO(
                 classroom.getId(),

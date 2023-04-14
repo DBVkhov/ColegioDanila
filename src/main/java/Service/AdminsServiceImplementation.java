@@ -5,7 +5,9 @@ import DTOs.StudentsDTO;
 import DTOs.SubjectsDTO;
 import DTOs.TeachersDTO;
 import Repository.ClassroomsRepository;
+import Repository.Entities.Students;
 import Repository.Entities.Subjects;
+import Repository.Entities.Teachers;
 import Repository.StudentsRepository;
 import Repository.SubjectsRepository;
 import Repository.TeachersRepository;
@@ -15,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.List;
 
 public class AdminsServiceImplementation implements AdminsService{
 
@@ -40,7 +43,7 @@ public class AdminsServiceImplementation implements AdminsService{
     }
 
     @Override
-    public void changeTeacherDTOToDB(TeachersDTO teacher) throws IOException, SQLException {
+    public void modifyTeacherDTOInDB(TeachersDTO teacher) throws IOException, SQLException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println(teacher.getDni());
         System.out.println("DNI: ");
@@ -66,10 +69,80 @@ public class AdminsServiceImplementation implements AdminsService{
                 changeClassService.changeToSubjectEntity(subjects));
     }
 
+    public void modifyStudentDTOInDB(StudentsDTO student) throws IOException, SQLException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println(student.getDni());
+        System.out.println("DNI: ");
+        String dni = bufferedReader.readLine();
+        System.out.println(student.getName());
+        System.out.println("name: ");
+        String name = bufferedReader.readLine();
+        System.out.println(student.getCourse());
+        System.out.println("Course: ");
+        int course = Integer.parseInt(bufferedReader.readLine());
+        System.out.println(student.getAge());
+        System.out.println("Age(yyyy-mm-dd): ");
+        Date age = Date.valueOf(bufferedReader.readLine());
+        studentsRepository.modifyStudentInDB(
+                student.getId(),
+                dni,
+                name,
+                age,
+                course
+                );
+
+
+    }
+
     @Override
     public StudentsDTO searchStudentDTOByID(int id) throws SQLException {
         return changeClassService.changeToStudentsDTO(
                 studentsRepository.getStudentByIDFromDB(id)
         );
     }
+
+    public TeachersDTO searchTeacherDTOByID(int id) throws SQLException {
+        return changeClassService.changeToTeacherDTO(
+                teachersRepository.getTeacherByIDFromDB(id)
+        );
+    }
+
+    public void deleteTeacherDTO(TeachersDTO teacher){
+        teachersRepository.deleteTeacherInDB(changeClassService.changeToTeacherEntity(teacher).getId());
+    }
+
+    public void deleteStudentDTO(StudentsDTO student){
+        studentsRepository.deleteStudentInDB(changeClassService.changeToStudentEntity(student).getId());
+    }
+
+    public StudentsDTO askStudent() throws SQLException, IOException {
+        List<StudentsDTO> students = changeClassService.changeListOfStudentsToDTO(studentsRepository.getAllStudentsFromDB());
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        for(StudentsDTO student : students){
+            System.out.println(student.getId() + " " + student.getName() + " " + student.getDni());
+        }
+        return changeClassService.changeToStudentsDTO(
+                studentsRepository.getStudentByIDFromDB(
+                        Integer.parseInt(
+                                bufferedReader.readLine()
+                        )
+                )
+        );
+    }
+
+    public TeachersDTO askTeacher() throws SQLException, IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        List<TeachersDTO> teachers = changeClassService.changeListOfTeachersToDTO(teachersRepository.getAllTeachersFromDB());
+        for(TeachersDTO teacher : teachers){
+            System.out.println(teacher.getId() + " " + teacher.getName() + " " + teacher.getDni());
+        }
+        return changeClassService.changeToTeacherDTO(
+                teachersRepository.getTeacherByIDFromDB(
+                        Integer.parseInt(
+                                bufferedReader.readLine()
+                        )
+                )
+        );
+    }
+
 }
