@@ -5,13 +5,10 @@ import DTOs.StudentsDTO;
 import DTOs.SubjectsDTO;
 import DTOs.TeachersDTO;
 import Repository.ClassroomsRepository;
-import Repository.Entities.Students;
 import Repository.Entities.Subjects;
-import Repository.Entities.Teachers;
 import Repository.StudentsRepository;
 import Repository.SubjectsRepository;
 import Repository.TeachersRepository;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
