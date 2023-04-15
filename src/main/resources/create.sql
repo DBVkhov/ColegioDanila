@@ -1,4 +1,6 @@
-DROP TABLE IF EXISTS STUDENTGRADES;
+DROP TABLE IF EXISTS ASSISTANCES;
+DROP TABLE IF EXISTS POSITIVES;
+DROP TABLE IF EXISTS GRADES;
 DROP TABLE IF EXISTS STUDENTINCLASSROOM;
 DROP TABLE IF EXISTS CLASSROOMS;
 DROP TABLE IF EXISTS TEACHERS;
@@ -83,7 +85,44 @@ idsub int,
 course int,
 grade int NOT NULL,
 description VARCHAR(300),
-FOREIGN KEY(idstudentincr) FROM STUDENTINCLASSROOM(id),
+FOREIGN KEY(idstud) FROM STUDENTS(id),
 FOREIGN KEY(idsub) FROM SUBJECTS(id)
+
+);
+
+CREATE TABLE IF NOT EXISTS POSITIVES(
+
+id identity primary key,
+idstud int,
+idsub int,
+positive boolean,
+description VARCHAR(300),
+dateadded date,
+FOREIGN KEY(idstud) FROM STUDENTS(id),
+FOREIGN KEY(idsub) FROM SUBJECTS(id)
+
+);
+
+CREATE TABLE IF NOT EXISTS ASSISTANCES(
+
+id identity primary key,
+idstud int,
+idsub int,
+assistance boolean,
+dateassistance date,
+FOREIGN KEY(idstud) FROM STUDENTS(id),
+FOREIGN KEY(idsub) FROM SUBJECTS(id)
+
+);
+
+CREATE TABLE IF NOT EXISTS MEETINGS(
+
+id identity primary key,
+idstud int,
+idteach int,
+datemeet date,
+description VARCHAR(300),
+FOREIGN KEY(idstud) FROM STUDENTS(id),
+FOREIGN KEY(idteach) FROM TEACHERS(id)
 
 );
