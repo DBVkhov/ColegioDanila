@@ -2,13 +2,13 @@ package DTOs;
 
 public class SubjectsDTO {
 
-    int id;
+    private int id;
 
-    String name;
+    private String name;
 
-    int course;
+    private int course;
 
-    String description;
+    private String description;
 
     public SubjectsDTO(int id, String name, int course, String description) {
         this.id = id;

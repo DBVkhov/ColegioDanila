@@ -7,17 +7,17 @@ import java.util.List;
 
 public class StudentsDTO {
 
-    int id;
+    private int id;
 
-    String dni;
+    private String dni;
 
-    String name;
+    private String name;
 
-    Date age;
+    private Date age;
 
-    int course;
+    private int course;
 
-    List<StudentsInClassroomDTO> classrooms;
+    private List<StudentsInClassroomDTO> classrooms;
 
     public StudentsDTO(int id, String dni, String name, Date age, int course, List<StudentsInClassroomDTO> classrooms) {
         this.id = id;

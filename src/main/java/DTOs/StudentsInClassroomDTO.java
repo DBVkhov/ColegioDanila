@@ -5,11 +5,11 @@ import Repository.Entities.Students;
 
 public class StudentsInClassroomDTO {
 
-    int id;
+    private int id;
 
-    StudentsDTO student;
+    private StudentsDTO student;
 
-    ClassroomsDTO classroom;
+    private ClassroomsDTO classroom;
 
     public StudentsInClassroomDTO(StudentsDTO student, ClassroomsDTO classroom) {
         this.student = student;

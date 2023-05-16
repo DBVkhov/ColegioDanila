@@ -5,17 +5,17 @@ import java.util.List;
 
 public class Students {
 
-    int id;
+    private int id;
 
-    String dni;
+    private String dni;
 
-    String name;
+    private String name;
 
-    Date age;
+    private Date age;
 
-    int course;
+    private int course;
 
-    List<StudentsInClassroom> classrooms;
+    private List<StudentsInClassroom> classrooms;
 
     public Students(int id, String dni, String name, Date age, int course, List<StudentsInClassroom> classrooms) {
         this.id = id;

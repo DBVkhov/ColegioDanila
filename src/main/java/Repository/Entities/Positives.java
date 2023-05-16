@@ -1,38 +1,30 @@
 package Repository.Entities;
 
-public class Grades {
+import java.sql.Date;
 
+public class Positives {
     private int id;
-
-    private boolean itsfinal;
-
     private Students student;
-
     private Subjects subject;
-
-    private int course;
-
-    private int grade;
-
+    private boolean positive;
     private String description;
+    private Date dateadded;
 
-    public Grades(int id, boolean itsfinal, Students student, Subjects subject, int course, int grade, String description) {
+    public Positives(int id, Students student, Subjects subject, boolean positive, String description, Date dateadded) {
         this.id = id;
-        this.itsfinal = itsfinal;
         this.student = student;
         this.subject = subject;
-        this.course = course;
-        this.grade = grade;
+        this.positive = positive;
         this.description = description;
+        this.dateadded = dateadded;
     }
 
-    public Grades(boolean itsfinal, Students student, Subjects subject, int course, int grade, String description) {
-        this.itsfinal = itsfinal;
+    public Positives(Students student, Subjects subject, boolean positive, String description, Date dateadded) {
         this.student = student;
         this.subject = subject;
-        this.course = course;
-        this.grade = grade;
+        this.positive = positive;
         this.description = description;
+        this.dateadded = dateadded;
     }
 
     public int getId() {
@@ -41,14 +33,6 @@ public class Grades {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public boolean isItsfinal() {
-        return itsfinal;
-    }
-
-    public void setItsfinal(boolean itsfinal) {
-        this.itsfinal = itsfinal;
     }
 
     public Students getStudent() {
@@ -67,20 +51,12 @@ public class Grades {
         this.subject = subject;
     }
 
-    public int getCourse() {
-        return course;
+    public boolean isPositive() {
+        return positive;
     }
 
-    public void setCourse(int course) {
-        this.course = course;
-    }
-
-    public int getGrade() {
-        return grade;
-    }
-
-    public void setGrade(int grade) {
-        this.grade = grade;
+    public void setPositive(boolean positive) {
+        this.positive = positive;
     }
 
     public String getDescription() {
@@ -89,5 +65,13 @@ public class Grades {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getDateadded() {
+        return dateadded;
+    }
+
+    public void setDateadded(Date dateadded) {
+        this.dateadded = dateadded;
     }
 }

@@ -5,19 +5,19 @@ import Repository.Entities.Subjects;
 
 public class GradesDTO {
 
-    int id;
+    private int id;
 
-    boolean itsfinal;
+    private boolean itsfinal;
 
-    StudentsDTO student;
+    private StudentsDTO student;
 
-    SubjectsDTO subject;
+    private SubjectsDTO subject;
 
-    int course;
+    private int course;
 
-    int grade;
+    private int grade;
 
-    String description;
+    private String description;
 
     public GradesDTO(int id, boolean itsfinal, StudentsDTO student, SubjectsDTO subject, int course, int grade, String description) {
         this.id = id;

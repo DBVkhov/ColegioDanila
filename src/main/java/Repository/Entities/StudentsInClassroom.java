@@ -2,11 +2,11 @@ package Repository.Entities;
 
 public class StudentsInClassroom {
 
-    int id;
+    private int id;
 
-    Students student;
+    private Students student;
 
-    Classrooms classroom;
+    private Classrooms classroom;
 
     public StudentsInClassroom(int id, Students student, Classrooms classroom) {
         this.id = id;

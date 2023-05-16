@@ -3,15 +3,15 @@ import java.util.Date;
 
 public class Teachers {
 
-    int id;
+    private int id;
 
-    String name;
+    private String name;
 
-    String dni;
+    private String dni;
 
-    Date age;
+    private Date age;
 
-    Subjects subject;
+    private Subjects subject;
 
     public Teachers(int id, String name, String dni, Date age, Subjects subject) {
         this.id = id;

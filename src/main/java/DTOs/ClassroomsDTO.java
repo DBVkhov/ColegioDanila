@@ -8,19 +8,19 @@ import java.util.List;
 
 public class ClassroomsDTO {
 
-    int id;
+    private int id;
 
-    String name;
+    private String name;
 
-    int course;
+    private int course;
 
-    SubjectsDTO subject;
+    private SubjectsDTO subject;
 
-    TeachersDTO teacher;
+    private TeachersDTO teacher;
 
-    List<StudentsInClassroomDTO> students;
+    private List<StudentsInClassroomDTO> students;
 
-    int quantityOfStudents;
+    private int quantityOfStudents;
 
     public ClassroomsDTO(int id, String name, int course, SubjectsDTO subject, TeachersDTO teacher, List<StudentsInClassroomDTO> students, int quantityOfStudents) {
         this.id = id;

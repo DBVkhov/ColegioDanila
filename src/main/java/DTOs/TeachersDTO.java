@@ -7,15 +7,15 @@ import java.util.Date;
 
 public class TeachersDTO {
 
-    int id;
+    private int id;
 
-    String name;
+    private String name;
 
-    String dni;
+    private String dni;
 
-    Date age;
+    private Date age;
 
-    SubjectsDTO subject;
+    private SubjectsDTO subject;
 
     public TeachersDTO(int id, String name, String dni, Date age, SubjectsDTO subject) {
         this.id = id;

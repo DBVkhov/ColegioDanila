@@ -2,13 +2,13 @@ package Repository.Entities;
 
 public class Subjects {
 
-    int id;
+    private int id;
 
-    String name;
+    private String name;
 
-    int course;
+    private int course;
 
-    String description;
+    private String description;
 
     public Subjects(int id, String name, int course, String description) {
         this.id = id;
